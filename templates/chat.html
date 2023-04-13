@@ -1,36 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- extend the base template -->
 
 {% block content %}
+<!-- Define the content that will be displayed in this block -->
 <h1>Chat</h1>
 <ul id="chat-log"></ul>
 <form id="chat-form">
   <input type="text" id="chat-message-input">
   <button type="submit">Send</button>
 </form>
+
+<!-- Define a script tag containing the JavaScript code for handling WebSocket communications -->
 <script>
-const chatSocket = new WebSocket(
+const chatSocket = new WebSocket(  <!-- create a new WebSocket object and connect to the server -->
     'ws://'
     + window.location.host
     + '/ws/chat/'
 );
 
-chatSocket.onmessage = function(event) {
+chatSocket.onmessage = function(event) {  <!-- define a callback function to handle incoming messages from the server -->
     const data = JSON.parse(event.data);
     const message = data['message'];
-    const chatLog = document.querySelector('#chat-log');
+    const chatLog = document.querySelector('#chat-log');  <!-- find the chat log element on the page -->
     const messageNode = document.createElement('li');
     messageNode.innerText = message;
-    chatLog.appendChild(messageNode);
+    chatLog.appendChild(messageNode);  <!-- append the new message to the chat log -->
 };
 
-document.querySelector('#chat-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const messageInputDom = document.querySelector('#chat-message-input');
-    const message = messageInputDom.value;
-    chatSocket.send(JSON.stringify({
+document.querySelector('#chat-form').addEventListener('submit', function(event) {  <!-- listen for form submissions -->
+    event.preventDefault();  <!-- prevent the form from submitting normally -->
+    const messageInputDom = document.querySelector('#chat-message-input');  <!-- find the message input element on the page -->
+    const message = messageInputDom.value;  <!-- extract the text from the message input element -->
+    chatSocket.send(JSON.stringify({  <!-- serialize the message as JSON and send it to the server via the WebSocket connection -->
         'message': message
     }));
-    messageInputDom.value = '';
+    messageInputDom.value = '';  <!-- clear the message input field after sending the message -->
 });
 </script>
 {% endblock %}

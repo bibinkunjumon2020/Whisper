@@ -1,16 +1,10 @@
-"""
-WSGI config for chat_mallu project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/4.2/howto/deployment/wsgi/
-"""
-
+# Import the necessary modules for serving the Django application
 import os
-
 from django.core.wsgi import get_wsgi_application
 
+# Set the environment variable to point to the project's settings module
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "chat_mallu.settings")
 
+# Retrieve the WSGI application object configured for this project
 application = get_wsgi_application()
+

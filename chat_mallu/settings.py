@@ -56,15 +56,21 @@ TEMPLATES = [
     },
 ]
 
+# Define the application that will be used for WSGI requests
 WSGI_APPLICATION = "chat_mallu.wsgi.application"
 
+# Define the application that will be used for ASGI requests
 ASGI_APPLICATION = 'chat_mallu.routing.application'
 
+# Define the channel layers configuration
 CHANNEL_LAYERS = {
+    # Use the 'default' channel layer
     'default': {
+        # Use an in-memory channel layer backend for simplicity
         'BACKEND': 'channels.layers.InMemoryChannelLayer',
     },
 }
+
 
 
 # Database
