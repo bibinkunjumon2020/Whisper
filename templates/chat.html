@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Chat</h1>
+<ul id="chat-log"></ul>
+<form id="chat-form">
+  <input type="text" id="chat-message-input">
+  <button type="submit">Send</button>
+</form>
+<script>
+const chatSocket = new WebSocket(
+    'ws://'
+    + window.location.host
+    + '/ws/chat/'
+);
+
+chatSocket.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    const message = data['message'];
+    const chatLog = document.querySelector('#chat-log');
+    const messageNode = document.createElement('li');
+    messageNode.innerText = message;
+    chatLog.appendChild(messageNode);
+};
+
+document.querySelector('#chat-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const messageInputDom = document.querySelector('#chat-message-input');
+    const message = messageInputDom.value;
+    chatSocket.send(JSON.stringify({
+        'message': message
+    }));
+    messageInputDom.value = '';
+});
+</script>
+{% endblock %}

@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "whisperApp",
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "chat_mallu.wsgi.application"
+
+ASGI_APPLICATION = 'chat_mallu.routing.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 # Database
