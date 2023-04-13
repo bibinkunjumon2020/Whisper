@@ -90,6 +90,10 @@ You should now be able to see both users in the chatroom. Type a message in one 
 
 That's it! You should now have a working chat application.
 
+## Screenshot:
+
+<img width="388" alt="image" src="https://user-images.githubusercontent.com/104210649/231892620-7b9d5c39-f179-4a75-bf92-52a06c646a6a.png">
+
 
 ## 🚀 About Me
 
