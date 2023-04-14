@@ -1,7 +1,7 @@
-from channels.generic.websocket import AsyncWebsocketConsumer  # Import the AsyncWebsocketConsumer class from channels.generic.websocket
-import json  # Import the json library
+from channels.generic.websocket import AsyncWebsocketConsumer 
+import json 
 
-class ChatConsumer(AsyncWebsocketConsumer):  # Define a new subclass of AsyncWebsocketConsumer called 'ChatConsumer'
+class ChatConsumer(AsyncWebsocketConsumer):  
     async def connect(self):
         await self.channel_layer.group_add('chat', self.channel_name)  # Add this WebSocket connection to the 'chat' group
         await self.accept()  # Accept the WebSocket connection

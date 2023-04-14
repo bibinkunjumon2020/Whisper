@@ -1,5 +1,4 @@
 # Importing the necessary libraries for this code
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Defining a class named ChatView which inherits TemplateView class 

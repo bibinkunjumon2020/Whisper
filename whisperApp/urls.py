@@ -1,6 +1,6 @@
 
 from django.urls import path  # Import the 'path' function from Django's URL framework.
-from .views import ChatView  # Import the ChatView class from the 'views.py' module in the same directory as this file.
+from whisperApp.views import ChatView  # Import the ChatView class from the 'views.py' module .
 
 # Define a list of URL patterns for this web application.
 urlpatterns = [

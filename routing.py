@@ -1,7 +1,8 @@
 from django.urls import path
-from django.conf.urls import url, include
+from django.conf.urls import include
 from channels.routing import ProtocolTypeRouter, URLRouter
 from whisperApp.routing import websocket_urlpatterns
+
 
 # Define the application's routing protocol based on the request type
 application = ProtocolTypeRouter({

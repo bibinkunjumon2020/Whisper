@@ -17,23 +17,23 @@ const chatSocket = new WebSocket(  <!-- create a new WebSocket object and connec
     + '/ws/chat/'
 );
 
-chatSocket.onmessage = function(event) {  <!-- define a callback function to handle incoming messages from the server -->
+chatSocket.onmessage = function(event) {  //<!-- define a callback function to handle incoming messages from the server -->
     const data = JSON.parse(event.data);
     const message = data['message'];
-    const chatLog = document.querySelector('#chat-log');  <!-- find the chat log element on the page -->
+    const chatLog = document.querySelector('#chat-log');  //<!-- find the chat log element on the page -->
     const messageNode = document.createElement('li');
     messageNode.innerText = message;
-    chatLog.appendChild(messageNode);  <!-- append the new message to the chat log -->
+    chatLog.appendChild(messageNode);  //<!-- append the new message to the chat log -->
 };
 
-document.querySelector('#chat-form').addEventListener('submit', function(event) {  <!-- listen for form submissions -->
-    event.preventDefault();  <!-- prevent the form from submitting normally -->
-    const messageInputDom = document.querySelector('#chat-message-input');  <!-- find the message input element on the page -->
-    const message = messageInputDom.value;  <!-- extract the text from the message input element -->
-    chatSocket.send(JSON.stringify({  <!-- serialize the message as JSON and send it to the server via the WebSocket connection -->
+document.querySelector('#chat-form').addEventListener('submit', function(event) {  //<!-- listen for form submissions -->
+    event.preventDefault();  //<!-- prevent the form from submitting normally -->
+    const messageInputDom = document.querySelector('#chat-message-input');  //<!-- find the message input element on the page -->
+    const message = messageInputDom.value;  //<!-- extract the text from the message input element -->
+    chatSocket.send(JSON.stringify({  //<!-- serialize the message as JSON and send it to the server via the WebSocket connection -->
         'message': message
     }));
-    messageInputDom.value = '';  <!-- clear the message input field after sending the message -->
+    messageInputDom.value = '';  //<!-- clear the message input field after sending the message -->
 });
 </script>
 {% endblock %}
